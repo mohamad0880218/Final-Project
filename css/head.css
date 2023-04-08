@@ -1,0 +1,83 @@
+﻿
+/*........................................image slider.................................... */
+.out-box {
+    width:1887px;
+    overflow:hidden;
+
+}
+.in-box {
+    position:relative;
+    width:7548px;
+    animation-name:head-anim;
+    animation-duration:200s;
+    animation-iteration-count:infinite;
+}
+    .in-box img {
+        float:left;
+    }
+@keyframes head-anim {
+    0% {
+        left:0px;
+    }
+    24.5%{
+        left:0px;
+    }
+    25% {
+        left:-1887px;
+    }
+    49.5% {
+        left:-1887px;
+    }
+    50% {
+        left:-3774px;
+    }
+    74.5% {
+        left:-3774px;
+    }
+    75% {
+        left:-5661px;
+    }
+    99.5% {
+        left:-5661px;
+    }
+
+    100% {
+        left:-7548px;
+    }
+}
+/*...................................................design buttons................................................*/
+.under {
+    position:absolute;
+    
+   
+
+
+}
+li {
+display:inline-block;
+}
+    li a {
+    text-decoration:none;
+    display:inline-block;
+    color:white;
+    font-family:source sans pro;
+    font-weight:lighter;
+    font-size:20px;
+    padding:0 20px;
+
+    }
+.hell::after {
+    content:'';
+   display:block;
+    width:0px;
+    height:2px;
+    background:red;
+    transition: width .3s
+
+     
+}
+.hell:hover::after {
+    width:100%;
+    transition: width .3s;
+
+}

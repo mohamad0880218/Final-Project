@@ -1,0 +1,307 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="css/StyleSheet2.css" rel="stylesheet" type="text/css" />
+    <link href="css/head.css" rel="stylesheet" />
+     
+    <asp:ContentPlaceHolder id="head" runat="server"> 
+        
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 77px;
+            height: 75px;
+        }
+        .auto-style2 {
+            width: 224px;
+        }
+        .auto-style3 {
+            width: 86px;
+        }
+        .foot {
+            background-color:#191919;
+        }
+        .auto-style6 {
+            width: 181px;
+        }
+        .auto-style11 {
+            width: 45px;
+            height: 46px;
+        }
+        .auto-style12 {
+            width: 130px;
+        }
+        .auto-style13 {
+            width: 112px;
+        }
+        .auto-style15 {
+            width: 821px;
+            height: 52px;
+        }
+        .auto-style16 {
+            width: 123px;
+        }
+        .auto-style17 {
+            width: 132px;
+        }
+    </style>
+</head>
+<body>
+    <marquee bgcolor="red">WELCOME TO OUR WEBSITE
+        </marquee>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Table ID="Table1" runat="server" BackColor="#191919"
+                Height="100px" Width="100%">
+
+
+                <asp:TableRow>
+                    <asp:TableCell HorizontalAlign="Center">
+                        <asp:GridView ID="grid1" runat="server" AutoGenerateColumns="False" BorderColor="#191919" BorderStyle="None">
+                            <AlternatingRowStyle BackColor="White" />
+                            <Columns>
+
+                                <asp:ImageField HeaderText="" DataImageUrlField="dp">
+                                    <ControlStyle Height="70px" Width="60px"></ControlStyle>
+
+                                </asp:ImageField>
+                            </Columns>
+                        </asp:GridView>
+                            
+                            <li> <a href="Account.aspx" class="hell"> <%Response.Write(Session["user"]); %></a></li>
+                    </asp:TableCell>
+
+
+                    <asp:TableCell>
+                        &nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </asp:TableCell>
+                <asp:TableCell>
+                        &nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </asp:TableCell>
+                <asp:TableCell>
+                      <font size=40 color=red><b><i>GamingRig</i></b></font>
+                </asp:TableCell>
+                <asp:TableCell>
+                        &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </asp:TableCell>
+
+                <asp:TableCell>
+                        &nbsp &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </asp:TableCell>
+
+                <asp:TableCell>
+
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true"
+                        OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="400px" BackColor="Red">
+                        <asp:ListItem>What are you looking for ?</asp:ListItem>
+                        <asp:ListItem>Ram</asp:ListItem>
+                        <asp:ListItem>Processors</asp:ListItem>
+                        <asp:ListItem>Power Supply</asp:ListItem>
+                        <asp:ListItem>Coolers</asp:ListItem>
+                        <asp:ListItem>Motherboards</asp:ListItem>
+                        <asp:ListItem>Storage Devices</asp:ListItem>
+                        <asp:ListItem>Cabinets</asp:ListItem>
+                        <asp:ListItem>Accessories</asp:ListItem>
+                        <asp:ListItem>Monitors</asp:ListItem>
+                    </asp:DropDownList>
+                </asp:TableCell>
+
+
+                <asp:TableCell class="tb1">
+                                           
+                        <table align="right">
+                            <tr>
+                                <th>
+                                    <a href="Home.aspx">
+                                        <img src="Pictures/domotics.png" height="50px" width="50px" /></a></th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <a href="Community.aspx">
+                                        <img src="Pictures/diversity.png" height="50px" width="50px" /></a></th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+
+                                <th>
+                                    <a href="Help.aspx">
+                                        <img src="Pictures/comments.png" height="40px" width="40px" /></a>
+                                </th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th><a href="Account.aspx">
+                                    <img src="Pictures/cart.png" height="50px" width="50px" /></a></th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <img src="Pictures/enter.png" height="50px" width="50px" />&nbsp;
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <li><a href="Home.aspx" class="hell">Home</a></li>
+
+                                </th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <li><a href="Community.aspx" class="hell">Community</a></li>
+                                </th>
+                                <th>&nbsp;</th>
+
+                                <th>&nbsp;</th>
+
+                                <th>
+                                    <li><a href="Help.aspx" class="hell">help&support</a></li>
+                                </th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <li><a href="Account.aspx" class="hell">Cart</a></li>
+                                </th>
+
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+
+
+                                <th>
+                                    <li>
+                                        <asp:LinkButton ID="LinkButton1" CssClass="hell" runat="server" OnClick="LinkButton1_Click">LogOut</asp:LinkButton></li>
+                                </th>
+                            </tr>
+                        </table>
+                  
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow ID="TableRow4" runat="server">
+            </asp:TableRow>
+            <asp:TableRow ID="TableRow5" runat="server">
+            </asp:TableRow>
+            <asp:TableRow ID="TableRow6" runat="server">
+            </asp:TableRow>
+
+        </asp:Table>
+        </asp:TableCell>
+        </asp:TableRow>
+          <asp:TableRow ID="TableRow1" runat="server">
+          </asp:TableRow>
+          <asp:TableRow ID="TableRow2" runat="server">
+          </asp:TableRow>
+          <asp:TableRow ID="TableRow3" runat="server">
+          </asp:TableRow>
+       
+        </asp:Table>
+        <asp:ContentPlaceHolder id="body" runat="server">
+         
+        </asp:ContentPlaceHolder>
+          
+            
+             <font color="White" face="times new roman">
+
+            <table width="100%" runat="server" bgcolor="#191919" >
+                <tr>
+                    <th>
+                        <table runat="server" align="center" >
+                            <tr>
+                                <th class="auto-style3" bgcolor="red">
+                                    <img src="Pictures/masterpage/cell-phone.png" class="auto-style1" />
+                                </th>
+                                <th class="auto-style2">
+                                     
+                                    <br />
+                                     
+                                  <font color="Red">   CALL US</font><h1>+919478639168&nbsp; </h1>
+                    
+                                </th>
+                           
+                                <th bgcolor="red">
+                                    <img src="Pictures/masterpage/send-mass-email.png"  height="95px" />
+                                </th>
+                                <th>
+                                    <font color="Red">   MAIL US</font><h1>mdr486861@gmail.coom&nbsp; </h1>
+                                </th>
+                            </tr>
+                        </table>
+                        
+                    </th>
+                </tr>
+                <tr>
+                    <th align="center">
+                        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br />
+                        <br />
+                        <li>
+                        <a href="Home.aspx" class="hell">HOME</a></li>
+                        <font color="White" face="times new roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <li>
+                        <asp:LinkButton runat="server" CssClass="hell"   onclick="LinkButton1_Click">LOGOUT   </asp:LinkButton></li>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <li>
+                        <a href="Account.aspx" class="hell">CART</a></li>
+                        </font>
+
+
+
+                        <br />
+                        <br />
+                         <li>
+                        <a href="Help.aspx" class="hell">HELP & SUPPORT</a></li>
+                        <font color="White" face="times new roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <li>
+                        <a href="Community.aspx" class="hell">COMMUNITY</a></li>
+                        </font>
+
+
+
+
+                        <br />
+                        <br />
+                        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <h1><font color="Red"> FOLLOW US ON</font></h1>
+                        <table runat="server" align="center">
+                           
+                            <tr>
+                                <th>
+                                   <a href=""  ><img src="Pictures/masterpage/1-2-facebook-download-png-thumb.png" height="95px" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </th>
+                                <th>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="" > <img src="Pictures/masterpage/10-2-youtube-png-clipart-thumb.png" height="95px" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                </th>
+                                <th>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a href="" ><img src="Pictures/masterpage/6-2-instagram-png-pic-thumb.png" height="95px" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </th>
+                                <th>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="" > <img src="Pictures/masterpage/6-2-twitter-png-image-thumb.png" height="95px" /></a>
+                                </th>
+                            </tr>
+                        </table>
+                    </th>
+                </tr>
+            </table>
+
+            </font>    
+          
+          
+    </form>
+    
+</body>
+</html>

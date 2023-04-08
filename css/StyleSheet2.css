@@ -1,0 +1,59 @@
+﻿#ob
+{
+    width:700px;
+    overflow:hidden;
+}
+#slider
+{
+    position:relative;
+    width:2800px;
+    
+    animation:rizwan 20s infinite;
+       
+}
+#slider img
+{
+    float:left;   
+ }
+ @keyframes rizwan
+ {
+     0%
+     {
+        left:0px;
+     }
+     20%
+     {
+          left:-00px;
+         }
+     25%
+     {   left:-700px;   }
+     
+     45%
+     { left:-700px;}
+     
+     50%
+     {
+          left:-1400px;
+         }
+     
+     
+     70%
+     {  left:-1400px;  }
+     
+     75%
+     {  left:-2100px;} 
+     
+     
+     95%
+     {  left:-21000px; }
+      
+      
+     100%
+     {  left:-2800px; }    
+     
+     
+     }
+     
+     
+
+ 
