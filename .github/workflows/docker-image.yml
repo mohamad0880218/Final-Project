@@ -30,3 +30,22 @@ jobs:
       #run: |
         #docker build -t ghcr.io/mohamad0880218/python:latest .
         #docker push ghcr.io/mohamad0880218/python:latest
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          project_id: grounded-pager-400600
+
+    - name: Configure gcloud CLI
+      run: gcloud config set project grounded-pager-400600
+
+    - name: Build and Push Docker Image
+      run: |
+         docker build -t gcr.io/grounded-pager-400600/python-app:latest .
+         docker push gcr.io/grounded-pager-400600/python-app:latest
+    - name: Deploy to GCP
+      run: |
+          gcloud run deploy python-app \
+            --image gcr.io/grounded-pager-400600/python-app:latest \
+            --platform managed \
+            --region us-central1
