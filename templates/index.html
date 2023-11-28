@@ -4,14 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
+    <!-- Bootstrap CSS and Icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .list-group-item {
+            border-color: #dee2e6;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+
+        /* Add additional styling here if needed */
+
+        /* Subtle background pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('path/to/your/background.jpg') center center fixed;
+            background-size: cover;
+            opacity: 0.2; /* Adjust opacity as needed */
+        }
+    </style>
 </head>
 <body>
-    <h1>User List</h1>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.username }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1 class="mb-4">User List</h1>
+        <ul class="list-group mb-4">
+            {% for user in users %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ user.username }}
+                    <span class="badge badge-primary badge-pill"><i class="fas fa-user"></i></span>
+                </li>
+            {% endfor %}
+        </ul>
+        <form method="post" action="/add_user">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter username" name="username" required>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-plus"></i> Add User</button>
+                </div>
+            </div>
+        </form>
+        {% if message %}
+            <div class="alert alert-success" role="alert">
+                <i class="fas fa-check-circle"></i> {{ message }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
