@@ -21,8 +21,8 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.GIT_USER }}
-        password: ${{ secrets.GIT_TOKEN }}
+        username: mohamad0880218
+        password: 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
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
