@@ -9,6 +9,7 @@ database_password = "Mysql@3916"
 database_host = "final-project-sql.mysql.database.azure.com"
 database_port = 3306
 database_name = "{your_database}"
+
 #ssl_ca_filename = "{path/to/ca-cert-file.pem}"  # Replace with the path to your CA certificate file
 
 # Construct the SQLAlchemy Database URI
