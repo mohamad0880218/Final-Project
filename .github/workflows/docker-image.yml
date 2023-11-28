@@ -43,9 +43,4 @@ jobs:
       run: |
          docker build -t gcr.io/grounded-pager-400600/python-app:latest .
          docker push gcr.io/grounded-pager-400600/python-app:latest
-    - name: Deploy to GCP
-      run: |
-          gcloud run deploy python-app \
-            --image gcr.io/grounded-pager-400600/python-app:latest \
-            --platform managed \
-            --region us-central1
+    
