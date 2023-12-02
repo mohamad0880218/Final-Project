@@ -7,6 +7,6 @@ RUN git clone https://github.com/mohamad0880218/Final-Project.git
 #COPY .  ./
 #CMD ["echo","Image Created"]
 RUN pytest ./Final-Project/testt.py --junitxml=report.xml
-RUN mv report.xml ./Final-Project/Final-Project/Artifact/
+RUN mv report.xml ./Final-Project/Artifact/
 EXPOSE 5000
 CMD ["python3","./Final-Project/main.py"]
