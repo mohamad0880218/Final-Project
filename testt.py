@@ -24,14 +24,21 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_add_user(self):
+    # Print the current users before adding a new one
+        with app.app_context():
+            existing_users = User.query.all()
+            print("Existing Users:", existing_users)
+
         response = self.app.post('/add_user', data={'username': 'test_user'})
         self.assertEqual(response.status_code, 302)  # Redirect status code
 
-        # Ensure the user was added to the test database
+    # Ensure the user was added to the test database
         with app.app_context():
             users = User.query.all()
+            print("New Users:", users)
             self.assertEqual(len(users), 1)
             self.assertEqual(users[0].username, 'test_user')
+
 
 if __name__ == '__main__':
     unittest.main()
