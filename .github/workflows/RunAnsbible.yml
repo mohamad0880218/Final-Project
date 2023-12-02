@@ -20,7 +20,7 @@ jobs:
         pip install ansible
 
     - name: Run Ansible Playbook
-      run: ConfigScript/ansible.yml
+      run: ansible-playbook ConfigScript/ansible.yml
       env:
         ANSIBLE_HOST_KEY_CHECKING: "False"
 
