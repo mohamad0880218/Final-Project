@@ -24,7 +24,7 @@
 
     - name: Build Docker Image
       command: "docker build -t python:latest /Final-Project/Dockerfile"
-      become: yes1
+      become: yes
 
     - name: Run Docker Container
       command: "docker run -d --name python -p 5000:5000 python:latest"
