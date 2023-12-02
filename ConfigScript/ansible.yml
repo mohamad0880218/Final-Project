@@ -33,6 +33,6 @@
       become: yes
 
     - name: Run Docker Container
-      command: "docker run -d --name python python -p 5000:5000"
+      command: "docker run -d -p 5000:5000 python"
       become: yes
 
