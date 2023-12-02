@@ -16,20 +16,20 @@
         groups: docker
       become: yes
       
+    - name: Restart docker service
+      systemd:
+        name: docker
+        state: restarted
+      become: yes
+      
     - name: Log in to ghcr.io
       docker_login:
         registry_url: ghcr.io
         username: ${{ secrets.GIT_USER }}
         password: ${{ secrets.GIT_TOKEN }}
 
-    - name: Restart docker service
-      systemd:
-        name: docker
-        state: restarted
-      become: yes
-
     - name: Build Docker Image
-      command: "docker pull . -f ghcr.io/mohamad0880218/python:latest"
+      command: "docker pull ghcr.io/mohamad0880218/python:latest"
       become: yes
 
     - name: Run Docker Container
