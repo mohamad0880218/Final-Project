@@ -15,6 +15,12 @@
         name: "{{ lookup('env', 'USER') }}"
         groups: docker
       become: yes
+      
+    - name: Log in to ghcr.io
+      docker_login:
+        registry_url: ghcr.io
+        username: ${{ mohamad0880218 }}
+        password: ${{ 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 }}
 
     - name: Restart docker service
       systemd:
@@ -23,10 +29,10 @@
       become: yes
 
     - name: Build Docker Image
-      command: "docker build -t python:latest /Final-Project/Dockerfile"
+      command: "docker pull ghcr.io/mohamad0880218/python"
       become: yes
 
     - name: Run Docker Container
-      command: "docker run -d --name python -p 5000:5000 python:latest"
+      command: "docker run -d --name python -p 5000:5000 ghcr.io/mohamad0880218/python"
       become: yes
 
