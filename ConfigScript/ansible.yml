@@ -1,6 +1,6 @@
 ---
 - name: Install Docker, Build Docker Image, and Run Container
-  hosts: your_target_host
+  hosts: localhost
   become: yes  # Run tasks as sudo
 
   tasks:
