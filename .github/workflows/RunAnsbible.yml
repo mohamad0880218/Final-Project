@@ -2,8 +2,7 @@ name: Ansible Workflow
  
 on:
   push:
-    branches:
-      - main  # Change this to your main branch
+    branches: [ "master" ] # Change this to your main branch
 
 jobs:
   deploy:
