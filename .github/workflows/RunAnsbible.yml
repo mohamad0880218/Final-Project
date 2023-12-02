@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Use a self-hosted runner
+    runs-on: debian-latest  # Use a self-hosted runner
 
     steps:
     - name: Checkout Repository
