@@ -23,7 +23,7 @@
       become: yes
 
     - name: Build Docker Image
-      command: "docker build -t python:latest ./Final-Project/Dockerfile"
+      command: "docker build -t python:latest /Final-Project/Dockerfile"
       become: yes
 
     - name: Run Docker Container
