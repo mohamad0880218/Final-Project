@@ -28,11 +28,11 @@
         username: "{{ lookup('env','username') }}"
         password: "{{ lookup('env', 'password') }}"
 
-    #- name: Build Docker Image
-      #command: "docker pull ghcr.io/mohamad0880218/python:latest"
-     # become: yes
+    - name: Build Docker Image
+      command: "docker pull ghcr.io/mohamad0880218/python:latest"
+      become: yes
 
-  #  - name: Run Docker Container
-   #   command: "docker run -d -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
-    #  become: yes
+    - name: Run Docker Container
+      command: "docker run -d -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
+      become: yes
 
