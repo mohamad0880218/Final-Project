@@ -36,12 +36,5 @@
       command: "docker run -d -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
       become: yes
 
-- name: Get External IP of VM
-  hosts: instance-2  # Replace with the actual name or IP address of your VM
-  gather_facts: true
 
-  tasks:
-    - name: Display External IP
-      debug:
-        var: "gcp_compute.instance_info['{{ inventory_hostname }}']['networkInterfaces'][0]['accessConfigs'][0]['natIP']"
 
