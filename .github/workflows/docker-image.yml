@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
           DOCKER_TOKEN: ${{ secrets.GIT_TOKEN }}
+          DOCKER_CLI_EXPERIMENTAL: enabled
     steps:
     - uses: actions/checkout@v3
     - name: Login to GitHub Container Registry
