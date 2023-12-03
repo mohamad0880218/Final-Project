@@ -19,7 +19,7 @@ jobs:
     - name: Update
       run: |
         sudo apt-get update
-        sudo apt-get install -y python pip
+        sudo apt-get install -y curl python pip
 
     - name: Install dependencies
       run: |
@@ -35,7 +35,9 @@ jobs:
         sudo apt-get update
 
     - name: Run Ansible Playbook
-      run: ansible-playbook ConfigScript/ansible.yml
+      run: |
+        ansible-playbook ConfigScript/ansible.yml
+        curl 0.0.0.0:5000
       env:
         ANSIBLE_HOST_KEY_CHECKING: "False"
 
