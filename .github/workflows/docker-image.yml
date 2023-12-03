@@ -20,8 +20,9 @@ jobs:
 
     - name: Building image
       run: |
-        docker pull ghcr.io/mohamad0880218/python:latest
-        #docker build -t ghcr.io/mohamad0880218/python:latest .
+        #docker push ghcr.io/mohamad0880218/python:latest
+        docker build -t ghcr.io/mohamad0880218/python:latest .
+        docker push ghcr.io/mohamad0880218/python:latest
     - name: Testin image 
       run: |
         docker run -v ./:/Final-Project/Artifact -d -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
