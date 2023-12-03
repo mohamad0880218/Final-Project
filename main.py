@@ -2,8 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<root>:<Root_User>@/cloudsql/<grounded-pager-400600:us-central1:my-sql>/<mysql>?unix_socket=/cloudsql/<grounded-pager-400600:us-central1:my-sql>'
 db = SQLAlchemy(app)
+
+
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
