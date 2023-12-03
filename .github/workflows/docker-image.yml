@@ -18,11 +18,11 @@ jobs:
         sudo apt-get install curl
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Pulling images from package
+    - name: Building image
       run: |
-        docker pull ghcr.io/mohamad0880218/python
-        #docker build -t ghcr.io/mohamad0880218/python:latest .
-    - name: Testin image from package
+        #docker pull ghcr.io/mohamad0880218/python
+        docker build -t ghcr.io/mohamad0880218/python:latest .
+    - name: Testin image 
       run: |
         docker run -v ./:/Final-Project/Artifact -d -p 7000:5000 --name python ghcr.io/mohamad0880218/python:latest
         curl localhost:5000
