@@ -37,7 +37,7 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         ansible-playbook ConfigScript/ansible.yml
-        curl 0.0.0.0:5000
+    
       env:
         ANSIBLE_HOST_KEY_CHECKING: "False"
 
