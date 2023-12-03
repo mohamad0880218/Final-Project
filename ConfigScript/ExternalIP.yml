@@ -1,8 +1,0 @@
-- name: Get External IP of VM
-  hosts: instance-2  # Replace with the actual name or IP address of your VM
-  gather_facts: true
-
-  tasks:
-    - name: Display External IP
-      debug:
-        var: "gcp_compute.instance_info['{{ inventory_hostname }}']['networkInterfaces'][0]['accessConfigs'][0]['natIP']"
