@@ -25,8 +25,8 @@
     - name: Log in to ghcr.io
       docker_login:
         registry_url: ghcr.io
-        username: ${{ secrets.GIT_USER }}
-        password: ${{ secrets.GIT_TOKEN }}
+        username: "{{ lookup('env','username') }}"
+        password: "{{ lookup('env', 'password') }}"
 
     #- name: Build Docker Image
       #command: "docker pull ghcr.io/mohamad0880218/python:latest"
