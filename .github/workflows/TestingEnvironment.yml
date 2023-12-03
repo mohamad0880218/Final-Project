@@ -37,6 +37,7 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         ansible-playbook ConfigScript/ansible.yml
+        ansible-playbook ConfigScript/ExternalIP.yml
     
       env:
         ANSIBLE_HOST_KEY_CHECKING: "False"
