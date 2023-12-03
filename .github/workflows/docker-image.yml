@@ -16,7 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Login to GitHub Container Registry
-      run: echo $DOCKER_TOKEN | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: |
+        docker login ghcr.io -u ${{ github.actor }} -p $DOCKER_TOKEN
 
     - name: Pulling images from package
       run: |
