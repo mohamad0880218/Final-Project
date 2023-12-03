@@ -1,12 +1,12 @@
 name: Ansible Workflow
  
 on:
-  #push:
-   # branches: [ "master" ] # Change this to your main branch
+  push:
+    branches: [ "master" ] # Change this to your main branch
 
 jobs:
   deploy:
-    runs-on: # ubuntu-20.04  # Use a self-hosted runner
+    runs-on:  ubuntu-20.04  # Use a self-hosted runner
     env:
       password: ${{ secrets.GITHUB_TOKEN }}
       username: ${{ github.actor }}
