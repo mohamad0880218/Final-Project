@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on:  ubuntu-20.04  # Use a self-hosted runner
     env:
-      password: ${{ secrets.GITHUB_TOKEN }}
+      password: ${{ secrets.GIT_TOKEN }}
       username: ${{ github.actor }}
 
     steps:
