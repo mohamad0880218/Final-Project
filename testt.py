@@ -6,7 +6,8 @@ class TestApp(unittest.TestCase):
     def setUp(self):
         # Use a separate test database
         app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<root>:<Root_User>@/cloudsql/<grounded-pager-400600:us-central1:my-sql>/<mysql>?unix_socket=/cloudsql/<grounded-pager-400600:us-central1:my-sql>'
+
         self.app = app.test_client()
 
         # Initialize the app context and create the test database
