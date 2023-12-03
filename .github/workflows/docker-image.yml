@@ -9,11 +9,7 @@ on:
 jobs:
 
   build:
-#password: ${{ secrets.GIT_TOKEN }}
-     # username: ${{ secrets.GIT_USER }}
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Login to GitHub Container Registry
@@ -22,7 +18,7 @@ jobs:
     - name: Pulling images from package
       run: |
         docker build -t ghcr.io/mohamad0880218/python:latest .
-         # docker pull ghcr.io/mohamad0880218/python:latest
+        docker puush ghcr.io/mohamad0880218/python:latest
         docker run -v ./:/Final-Project/Artifact -d -p 7000:5000 --name python ghcr.io/mohamad0880218/python:latest
         docker stop python
         docker rm python
