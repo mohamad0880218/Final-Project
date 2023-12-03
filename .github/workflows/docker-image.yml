@@ -10,13 +10,16 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    env:
+          DOCKER_AUTH: ${{ secrets.GIT_TOKEN }}
     steps:
     - uses: actions/checkout@v3
     - name: Login to GitHub Container Registry
-      run: echo "${{ secrets.GIT_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Pulling images from package
       run: |
+        echo "DOCKER_AUTH=${{ secrets.GIT_TOKEN }}" >> $GITHUB_ENV
         docker build -t ghcr.io/mohamad0880218/python:latest .
         docker run -v ./:/Final-Project/Artifact -d -p 7000:5000 --name python ghcr.io/mohamad0880218/python:latest
         docker stop python
