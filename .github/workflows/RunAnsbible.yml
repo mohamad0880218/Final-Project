@@ -7,6 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04  # Use a self-hosted runner
+    env:
+      password: ${{ secrets.GIT_TOKEN }}
+      username: ${{ secrets.GIT_USER }}
 
     steps:
     - name: Checkout Repository
