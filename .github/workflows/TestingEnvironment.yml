@@ -37,6 +37,8 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         ansible-playbook ConfigScript/ansible.yml
+    - name: Run Ansible Playbook-2
+      run: |
         ansible-playbook ConfigScript/ExternalIP.yml
     
       env:
