@@ -27,7 +27,7 @@ jobs:
     - name: Install Ansible
       run: |
    
-        pip install ansible
+        pip install ansible requests
 
     - name: Update
       run: |
