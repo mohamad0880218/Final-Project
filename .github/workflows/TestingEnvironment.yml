@@ -1,4 +1,4 @@
-name: TestinEnvironment
+name: TestingEnvironment
  
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   Testing:
-    runs-on:  linux-production  # Use a self-hosted runner
+    runs-on:  production  # Use a self-hosted runner
     env:
       password: ${{ secrets.GITHUB_TOKEN }}
       username: ${{ github.actor }}
