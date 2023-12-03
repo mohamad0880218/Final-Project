@@ -20,7 +20,7 @@ jobs:
 
     - name: Pulling images from package
       run: |
-        docker pull ghcr.io/mohamad0880218/python:latest
+        docker pull ghcr.io/mohamad0880218/python
         #docker build -t ghcr.io/mohamad0880218/python:latest .
     - name: Testin image from package
       run: |
