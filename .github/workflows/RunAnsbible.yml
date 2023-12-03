@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on:  ubuntu-20.04  # Use a self-hosted runner
     env:
-      password: ${{ secrets.GIT_TOKEN }}
+      password: ${{ secrets.GITHUB_TOKEN }}
       username: ${{ github.actor }}
 
     steps:
@@ -31,6 +31,9 @@ jobs:
     - name: Install Ansible
       run: |   
         pip install ansible requests 
+    - name: Update Again
+      run: |
+        sudo apt-get update
 
     - name: Run Ansible Playbook
       run: ansible-playbook ConfigScript/ansible.yml
