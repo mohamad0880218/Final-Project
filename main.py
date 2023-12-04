@@ -15,6 +15,7 @@ DBNAME = os.environ.get("DBNAME","appdata")
 #PROJECT_ID = os.environ.get("PROJECT_ID")
 #INSTANCE_NAME = os.environ.get("INSTANCE_NAME")
 
+
 # Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # Disable Flask-SQLAlchemy event tracking
