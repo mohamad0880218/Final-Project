@@ -19,7 +19,7 @@ class TestApp(unittest.TestCase):
 
         # Initialize the app context and create the test database
         with app.app_context():
-            db.drop_all()
+            
             db.create_all()
 
     def tearDown(self):
