@@ -79,4 +79,5 @@ jobs:
         docker stop python
         docker rm python
     - name: PUSH THE PACKAGE
+      run: |
         docker push ghcr.io/mohamad0880218/python:latest
