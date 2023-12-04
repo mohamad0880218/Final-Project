@@ -2,7 +2,7 @@ import unittest
 from main import app, db, User
 PASSWORD = "Root_User"
 PUBLIC_IP_ADDRESS = "34.105.101.145"
-DBNAME = "testappdata"
+DBNAME = "testappdb"
 PROJECT_ID = "grounded-pager-400600"
 INSTANCE_NAME = "my-sql"
 
