@@ -19,7 +19,11 @@ class TestApp(unittest.TestCase):
 
     def tearDown(self):
         with app.app_context():
-            db.session.rollback()
+            db.session.query(User).delete()
+            db.session.commit()
+            db.session.remove()
+            db.drop_all()
+    
 
 
     def test_index(self):
