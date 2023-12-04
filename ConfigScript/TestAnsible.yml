@@ -37,5 +37,5 @@
       become: yes
 
     - name: Run Docker Container
-      command: "docker run -d -e DBANME='testappdb' -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
+      command: 'docker run -d -e DBANME="testappdb" -p 5000:5000 ghcr.io/mohamad0880218/python:latest'
       become: yes
