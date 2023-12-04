@@ -11,11 +11,17 @@ class TestApp(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}_test"
-    
+
         self.app = app.test_client()
 
         with app.app_context():
+            # Clear existing users
+            db.session.query(User).delete()
+            db.session.commit()
+
+            # Create tables
             db.create_all()
+
 
     def tearDown(self):
         with app.app_context():
