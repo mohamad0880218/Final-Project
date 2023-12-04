@@ -1,8 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-
+# Initializing Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://<root>:<Root_User>@/cloudsql/<grounded-pager-400600:us-central1:my-sql>/<mysql>?unix_socket=/cloudsql/<grounded-pager-400600:us-central1:my-sql>'
+
+# Google Cloud SQL (change this accordingly)
+PASSWORD = "Root_User"
+PUBLIC_IP_ADDRESS = "34.105.101.145:3306"
+DBNAME = "appdata"
+PROJECT_ID = "grounded-pager-400600"
+INSTANCE_NAME = "my-sql"
+
+# Configuration
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # Disable Flask-SQLAlchemy event tracking
+
+# Initialize SQLAlchemy without the app
 db = SQLAlchemy(app)
 
 
@@ -29,6 +41,6 @@ def add_user():
 
 if __name__ == '__main__':
     with app.app_context():
+        #db.drop_all()
         db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
-
