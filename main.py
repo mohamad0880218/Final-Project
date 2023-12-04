@@ -11,7 +11,7 @@ INSTANCE_NAME = "my-sql"
 # Google Cloud SQL (change this accordingly)
 #PASSWORD = os.environ.get("PASSWORD")
 #PUBLIC_IP_ADDRESS = os.environ.get("PUBLIC_IP_ADDRESS")
-DBNAME = os.environ.get("DBNAME","appdata")
+DBNAME = os.environ.get("DBNAME")
 #PROJECT_ID = os.environ.get("PROJECT_ID")
 #INSTANCE_NAME = os.environ.get("INSTANCE_NAME")
 
