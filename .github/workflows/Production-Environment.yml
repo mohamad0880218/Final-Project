@@ -39,7 +39,7 @@ jobs:
         sudo apt-get update
     - name: Run Ansible Playbook
       run: |
-        ansible-playbook ConfigScript/ansible.yml
+        ansible-playbook ConfigScript/ProductionAnsible.yml
     
     
       env:
