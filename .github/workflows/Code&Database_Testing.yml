@@ -10,13 +10,8 @@ jobs:
   
   
   CREATING_PUBLISHING_IMAGE:
-    runs-on: testing-env
-    env:
-      iNSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
-      pASSWORD : ${{ secrets.APP_PASS }}
-      pUBLIC_IP_ADDRESS : ${{ secrets.APP_DB_IP }}
-      bBNAME : ${{ secrets.APP_PRODUC_NAME }}
-      pROJECT_ID : ${{ secrets.APP_PROJECT_ID }}
+    runs-on: ubuntu:latest
+    
     steps:
     - uses: actions/checkout@v3
     - name: Login to GitHub Container Registry
