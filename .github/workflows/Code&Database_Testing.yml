@@ -74,7 +74,9 @@ jobs:
          -e PUBLIC_IP_ADDRESS="$pUBLIC_IP_ADDRESS" \
          -e PASSWORD="$pWORD" \
          -p 5000:5000 \
-         ghcr.io/mohamad0880218/python:latest
+         --name python ghcr.io/mohamad0880218/python:latest
 
         docker stop python
         docker rm python
+    - name: PUSH THE PACKAGE
+        docker push ghcr.io/mohamad0880218/python:latest
