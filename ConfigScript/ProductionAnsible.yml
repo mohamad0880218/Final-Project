@@ -27,6 +27,10 @@
         registry_url: ghcr.io
         username: "{{ lookup('env','username') }}"
         password: "{{ lookup('env', 'password') }}"
+    
+    - name: Delete Older Images 
+      command: "docker system prune -af"
+      become: yes
 
     - name: Pull Docker Image From ghcr.io
       command: "docker pull ghcr.io/mohamad0880218/python:latest"
