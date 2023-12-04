@@ -15,12 +15,14 @@ class TestApp(unittest.TestCase):
         self.app = app.test_client()
 
         with app.app_context():
-            # Clear existing users
+        # Clear existing users
             db.session.query(User).delete()
             db.session.commit()
 
-            # Create tables
+        # Add a print statement to confirm table creation
             db.create_all()
+            print("Tables created successfully.")
+
 
 
     def tearDown(self):
