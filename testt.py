@@ -9,30 +9,24 @@ INSTANCE_NAME = "my-sql"
 class TestApp(unittest.TestCase):
 
     def setUp(self):
+        # Use a separate test database
         app.config['TESTING'] = True
-        app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}_test"
+        app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"
+        #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+
 
         self.app = app.test_client()
 
+        # Initialize the app context and create the test database
         with app.app_context():
-        # Clear existing users
-            db.session.query(User).delete()
-            db.session.commit()
-
-        # Add a print statement to confirm table creation
+            db.drop_all()
             db.create_all()
-            print("Tables created successfully.")
-
-
 
     def tearDown(self):
+        # Drop the test database after the tests
         with app.app_context():
-            db.session.query(User).delete()
-            db.session.commit()
             db.session.remove()
             db.drop_all()
-    
-
 
     def test_index(self):
         response = self.app.get('/')
