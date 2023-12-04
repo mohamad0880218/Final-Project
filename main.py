@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
 # Initializing Flask app
 app = Flask(__name__)
 
 # Google Cloud SQL (change this accordingly)
 PASSWORD = "Root_User"
 PUBLIC_IP_ADDRESS = "34.105.101.145:3306"
-DBNAME = "appdata"
+DBNAME =os.environ.get("DBNAME", "appdata")
 PROJECT_ID = "grounded-pager-400600"
 INSTANCE_NAME = "my-sql"
 
@@ -41,6 +42,6 @@ def add_user():
 
 if __name__ == '__main__':
     with app.app_context():
-        #db.drop_all()
+        db.drop_all()
         db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
