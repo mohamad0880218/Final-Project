@@ -10,7 +10,7 @@ jobs:
   
   
   CREATING_PUBLISHING_IMAGE:
-    runs-on: ubuntu-latest
+    runs-on: testing-env
     env:
       iNSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
       pASSWORD : ${{ secrets.APP_PASS }}
