@@ -6,7 +6,7 @@ on:
 
 jobs:
   Testing:
-    runs-on:  production  # Use a self-hosted runner
+    runs-on:  testing-env  # Use a self-hosted runner
     env:
       password: ${{ secrets.GITHUB_TOKEN }}
       username: ${{ github.actor }}
@@ -19,12 +19,10 @@ jobs:
     - name: Update
       run: |
         sudo apt-get update
-        sudo apt-get install -y curl python pip
-
+        sudo apt-get install -y curl python3 python pip
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-
     
 
     - name: Install Ansible
@@ -33,7 +31,6 @@ jobs:
     - name: Update Again
       run: |
         sudo apt-get update
-
     - name: Run Ansible Playbook
       run: |
         ansible-playbook ConfigScript/ansible.yml
@@ -41,4 +38,3 @@ jobs:
     
       env:
         ANSIBLE_HOST_KEY_CHECKING: "False"
-
