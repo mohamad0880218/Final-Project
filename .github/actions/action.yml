@@ -39,4 +39,5 @@ runs:
       docker run -d --env-file ./instance/.env -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
       docker stop python
       docker rm python
+      echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       docker push ghcr.io/mohamad0880218/python:latest
