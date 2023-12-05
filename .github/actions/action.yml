@@ -44,7 +44,7 @@ runs:
              -e INSTANCE_NAME: "{{ lookup('env', 'APP_DB_INSTANCE') }}" \
              -e PASSWORD: "{{ lookup('env', 'APP_PASS') }}" \
              -e PUBLIC_IP_ADDRESS: "{{ lookup('env', 'APP_DB_IP') }}" \
-             -e PROJECT_ID: "{{ lookup('env', 'APP_PROJECT_ID') }} \
+             -e PROJECT_ID: "{{ lookup('env', 'APP_PROJECT_ID') }}" \
              -p 5000:5000 \
              --name python ghcr.io/mohamad0880218/python:latest
 
