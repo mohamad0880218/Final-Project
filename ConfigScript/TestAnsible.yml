@@ -36,17 +36,20 @@
       command: "docker pull ghcr.io/mohamad0880218/python:latest"
       become: yes
 
-    - name: Run Docker Container
+     - name: Run Docker Container
       docker_container:
         name: python
         image: ghcr.io/mohamad0880218/python:latest
         detach: yes
         env:
-          DBNAME: "testappdb"
+          DBNAME: "{{ lookup('env', 'bBNAME') }}"
           INSTANCE_NAME: "{{ lookup('env', 'iNSTANCE_NAME') }}"
           PASSWORD: "{{ lookup('env', 'pWORD') }}"
           PUBLIC_IP_ADDRESS: "{{ lookup('env', 'pUBLIC_IP_ADDRESS') }}"
           PROJECT_ID: "{{ lookup('env', 'pROJECT_ID') }}"
+        ports:
+          - "5000:5000"
+      become: yes
 
         ports:
           - "5000:5000"
