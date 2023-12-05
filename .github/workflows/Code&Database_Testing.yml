@@ -47,13 +47,19 @@ jobs:
         #docker push ghcr.io/mohamad0880218/python:latest
     - name: Testin image 
       run: |
-         docker run -d -e PASSWORD="Root_User" \
-         -e DBNAME="testappdb" \
-         -e PUBLIC_IP_ADDRESS="34.171.123.44" \
-         -e PROJECT_ID="grounded-pager-400600" \
-         -e INSTANCE_NAME="my-sql" \
-         -p 7000:5000 \
-         --name python ghcr.io/mohamad0880218/python:latest    
+        docker run -d \
+          -e PASSWORD="Root_User" \
+          -e DBNAME="testappdb" \
+          -e PUBLIC_IP_ADDRESS="34.171.123.44" \
+          -e PROJECT_ID="grounded-pager-400600" \
+          -e INSTANCE_NAME="my-sql" \
+          -p 7000:5000 \
+           --name python ghcr.io/mohamad0880218/python:latest
+
+    - name: Cleanup Docker Container
+      run: | 
+      # This step forcefully removes the container named 'python'
+    
               #docker run -d -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
         #docker run -d \
         # -e DBNAME="$dBNAME" \
