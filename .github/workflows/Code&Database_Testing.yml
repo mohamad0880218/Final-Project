@@ -47,7 +47,7 @@ jobs:
       with:
         name: artifacts
         path: |
-          Artifact/pytest-results.xml
+          Artifact/
      
   CREATING_PUBLISHING_IMAGE:
     runs-on: ubuntu-latest
