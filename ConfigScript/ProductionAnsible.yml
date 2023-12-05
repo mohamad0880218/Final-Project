@@ -36,7 +36,7 @@
       command: "docker pull ghcr.io/mohamad0880218/python:latest"
       become: yes
     - name: container try
-     command:'docker run -e PASSWORD="{{ lookup('env', 'pWORD') }}" -e DBNAME="{{ lookup('env', 'bBNAME') }}" -e PUBLIC_IP_ADDRESS="{{ lookup('env', 'pUBLIC_IP_ADDRESS') }}" -e PROJECT_ID="{{ lookup('env', 'pROJECT_ID') }}" -e INSTANCE_NAME="{{ lookup('env', 'iNSTANCE_NAME') }}" -p 5000:5000   ghcr.io/mohamad0880218/python:latest'
+      command: 'docker run -e PASSWORD="{{ lookup('env', 'pWORD') }}" -e DBNAME="{{ lookup('env', 'bBNAME') }}" -e PUBLIC_IP_ADDRESS="{{ lookup('env', 'pUBLIC_IP_ADDRESS') }}" -e PROJECT_ID="{{ lookup('env', 'pROJECT_ID') }}" -e INSTANCE_NAME="{{ lookup('env', 'iNSTANCE_NAME') }}" -p 5000:5000   ghcr.io/mohamad0880218/python:latest'
          
          
 
