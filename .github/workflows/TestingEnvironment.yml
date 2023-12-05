@@ -13,8 +13,9 @@ jobs:
       iNSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
       pWORD : ${{ secrets.APP_PASS }}
       pUBLIC_IP_ADDRESS : ${{ secrets.APP_DB_IP }}
-      bBNAME : ${{ secrets.APP_PRODUC_NAME }}
-      pROJECT_ID : ${{ secrets.APP_PROJECT_ID }}  
+      bBNAME : ${{ secrets.APP_TEST_DB }}
+      pROJECT_ID : ${{ secrets.APP_PROJECT_ID }} 
+      
 
     steps:
     - name: Checkout Repository
