@@ -11,20 +11,31 @@
         body {
             background-color: #f8f9fa;
             font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-image: url('https://source.unsplash.com/1920x1080/?gta-v');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             padding: 40px;
             max-width: 600px;
             margin: auto;
             text-align: center;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .list-group-item {
             border-color: #dee2e6;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .list-group-item:hover {
+            transform: scale(1.05);
         }
 
         .input-group {
@@ -33,22 +44,30 @@
 
         .alert {
             margin-top: 20px;
+            animation: slideInDown 1s ease-in-out;
         }
 
         /* Add additional styling here if needed */
 
-        /* Subtle background pattern */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: url('path/to/your/background.jpg') center center fixed;
-            background-size: cover;
-            opacity: 0.2; /* Adjust opacity as needed */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
