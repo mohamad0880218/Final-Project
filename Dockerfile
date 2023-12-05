@@ -1,10 +1,7 @@
 FROM ubuntu
 RUN apt-get update
-RUN apt-get install -y vim curl git python3 pip 
-RUN pip3 install flask numpy app xmlrunner pytest 
-RUN pip3 install flask_sqlalchemy pymysql 
 RUN git clone https://github.com/mohamad0880218/Final-Project.git
-#RUN pytest ./Final-Project/testt.py --junitxml=report.xml
-#RUN mv report.xml ./Final-Project/Artifact/
+RUN apt-get install -y vim curl git python3 pip 
+RUN pip3 install -r ./Final-Project/requirements.txt 
 EXPOSE 5000
 CMD ["python3","./Final-Project/main.py"]
