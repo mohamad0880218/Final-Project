@@ -49,14 +49,14 @@ jobs:
         path: |
           Artifact/
   
-  USING CUSTOMER ACTION:
+  USING_CUSTOMER_ACTION:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
     - name: Build and Publish Docker Image
-      uses: ./.github/actions/build-and-publish-image
+      uses: ./.github/actions
       with:
         APP_PASS: ${{ secrets.APP_PASS }}
         APP_DB_IP: ${{ secrets.APP_DB_IP }}
