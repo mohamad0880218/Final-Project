@@ -16,25 +16,38 @@ jobs:
       DBNAME: ${{ secrets.APP_TEST_DB }}
       PROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
       INSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
+      
     steps:
+    
     - uses: actions/checkout@v3
+    
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+        
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
         pip install -r requirements.txt
+        
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        
     - name: Test with pytest
       run: |
-        pytest testt.py
+        pytest testt.py --junitxml=pytest-results.xml
+        
+    - name: Archive Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifacts
+        path: |
+          pytest-results.xml
      
   CREATING_PUBLISHING_IMAGE:
     runs-on: ubuntu-latest
@@ -52,6 +65,7 @@ jobs:
       run: |
         sudo apt-get install curl
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    
     - name: Building image
       run: |
         docker build -t ghcr.io/mohamad0880218/python:latest .
