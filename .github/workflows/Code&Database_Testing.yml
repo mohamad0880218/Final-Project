@@ -48,7 +48,22 @@ jobs:
         name: artifacts
         path: |
           Artifact/
-     
+  
+  USING CUSTOMER ACTION:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Build and Publish Docker Image
+      uses: ./.github/actions/build-and-publish-image
+      with:
+        APP_PASS: ${{ secrets.APP_PASS }}
+        APP_DB_IP: ${{ secrets.APP_DB_IP }}
+        APP_TEST_DB: ${{ secrets.APP_TEST_DB }}
+        APP_PROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
+        APP_DB_INSTANCE: ${{ secrets.APP_DB_INSTANCE }}
+
   CREATING_PUBLISHING_IMAGE:
     runs-on: ubuntu-latest
     env:
