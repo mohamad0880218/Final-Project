@@ -2,8 +2,32 @@
 name: 'Build and Publish Docker Image'
 description: 'Builds a Docker image and publishes it to GitHub Container Registry'
 
+inputs:
+  APP_PASS:
+    description: 'Application password'
+    required: true
+  APP_DB_IP:
+    description: 'Database IP address'
+    required: true
+  APP_TEST_DB:
+    description: 'Test database name'
+    required: true
+  APP_PROJECT_ID:
+    description: 'Project ID'
+    required: true
+  APP_DB_INSTANCE:
+    description: 'Database instance name'
+    required: true
+
 runs:
   using: 'composite'
+  shell: bash  # or 'pwsh' for PowerShell
+  env:
+    APP_PASS: ${{ inputs.APP_PASS }}
+    APP_DB_IP: ${{ inputs.APP_DB_IP }}
+    APP_TEST_DB: ${{ inputs.APP_TEST_DB }}
+    APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
+    APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
   steps:
     - name: Set up Docker
       run: docker/setup-buildx-action@v1
@@ -15,7 +39,14 @@ runs:
       run: docker build -t ghcr.io/mohamad0880218/python:latest .
 
     - name: Testing image
-      run: docker run -d --env-file ./instance/.env -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
+      run: docker run -d \
+             -e DBNAME: "{{ lookup('env', 'APP_TEST_DB') }}" \
+             -e INSTANCE_NAME: "{{ lookup('env', 'APP_DB_INSTANCE') }}" \
+             -e PASSWORD: "{{ lookup('env', 'APP_PASS') }}" \
+             -e PUBLIC_IP_ADDRESS: "{{ lookup('env', 'APP_DB_IP') }}" \
+             -e PROJECT_ID: "{{ lookup('env', 'APP_PROJECT_ID') }} \
+             -p 5000:5000 \
+             --name python ghcr.io/mohamad0880218/python:latest
 
     - name: Push the package
       run: |
