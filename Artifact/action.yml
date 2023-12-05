@@ -1,0 +1,42 @@
+name: 'Build and Publish Docker Image'
+description: 'Builds a Docker image and publishes it to GitHub Container Registry'
+
+inputs:
+  APP_PASS:
+    description: 'Password for the application'
+    required: true
+  APP_DB_IP:
+    description: 'Public IP address for the database'
+    required: true
+  APP_TEST_DB:
+    description: 'Test database name'
+    required: true
+  APP_PROJECT_ID:
+    description: 'Project ID for the application'
+    required: true
+  APP_DB_INSTANCE:
+    description: 'Database instance name'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/mohamad0880218/python:latest'
+
+  env:
+    APP_PASS: ${{ inputs.APP_PASS }}
+    APP_DB_IP: ${{ inputs.APP_DB_IP }}
+    APP_TEST_DB: ${{ inputs.APP_TEST_DB }}
+    APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
+    APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
+
+  args:
+    - '/bin/bash'
+    - '-c'
+    - |
+      apt-get install curl
+      echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      docker build -t ghcr.io/mohamad0880218/python:latest .
+      docker run -d --env-file ./instance/.env -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
+      docker stop python
+      docker rm python
+      docker push ghcr.io/mohamad0880218/python:latest
