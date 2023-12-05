@@ -3,18 +3,17 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 # Initializing Flask app
 app = Flask(__name__)
-PASSWORD = "Root_User"
-PUBLIC_IP_ADDRESS = "34.105.101.145"
-#DBNAME = "appdata"
-PROJECT_ID = "grounded-pager-400600"
-INSTANCE_NAME = "my-sql"
-# Google Cloud SQL (change this accordingly)
-#PASSWORD = os.environ.get("PASSWORD")
-#PUBLIC_IP_ADDRESS = os.environ.get("PUBLIC_IP_ADDRESS")
-DBNAME = os.environ.get("DBNAME","testappdb")
-#PROJECT_ID = os.environ.get("PROJECT_ID")
-#INSTANCE_NAME = os.environ.get("INSTANCE_NAME")
 
+
+
+
+
+# Google Cloud SQL (change this accordingly)
+PASSWORD = os.environ.get("PASSWORD")
+PUBLIC_IP_ADDRESS = os.environ.get("PUBLIC_IP_ADDRESS")
+DBNAME = os.environ.get("DBNAME","testappdb")
+PROJECT_ID = os.environ.get("PROJECT_ID")
+INSTANCE_NAME = os.environ.get("INSTANCE_NAME")
 
 # Configuration
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"

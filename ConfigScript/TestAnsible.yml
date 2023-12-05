@@ -27,7 +27,7 @@
         registry_url: ghcr.io
         username: "{{ lookup('env','username') }}"
         password: "{{ lookup('env', 'password') }}"
-        
+    
     - name: Delete Older Images 
       command: "docker system prune -af"
       become: yes
@@ -37,5 +37,22 @@
       become: yes
 
     - name: Run Docker Container
-      command: 'docker run -d -e DBNAME="testappdb" -p 5000:5000 ghcr.io/mohamad0880218/python:latest'
+      docker_container:
+        name: python
+        image: ghcr.io/mohamad0880218/python:latest
+        detach: yes
+        env:
+          DBNAME: "testappdb"
+          INSTANCE_NAME: "{{ lookup('env', 'iNSTANCE_NAME') }}"
+          PASSWORD: "{{ lookup('env', 'pWORD') }}"
+          PUBLIC_IP_ADDRESS: "{{ lookup('env', 'pUBLIC_IP_ADDRESS') }}"
+          PROJECT_ID: "{{ lookup('env', 'pROJECT_ID') }}"
+
+        ports:
+          - "5000:5000"
+      #command: "docker run -d -e DBNAME='appdb' -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
+      #command: "docker run -d -e DBNAME=\"$dBNAME\" -e INSTANCE_NAME=\"$iNSTANCE_NAME\" -e PROJECT_ID=\"$pROJECT_ID\" -e PUBLIC_IP_ADDRESS=\"$pUBLIC_IP_ADDRESS \" -e PASSWORD=\"$pWORD \" -p 5000:5000 ghcr.io/mohamad0880218/python:latest"
       become: yes
+
+
+
