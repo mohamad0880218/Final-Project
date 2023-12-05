@@ -58,11 +58,7 @@ jobs:
         
     - name: Testin image 
       run: |
-        docker run -d -e DBNAME= "${{ secrets.APP_TEST_DB }}" \
-          -e INSTANCE_NAME= "${{ secrets.APP_DB_INSTANCE }}" \
-          -e PASSWORD= "${{ secrets.APP_PASS }}" \
-          -e PUBLIC_IP_ADDRESS= "${{ secrets.APP_DB_IP }}" \
-          -e PROJECT_ID= "${{ secrets.APP_PROJECT_ID }}" \
+        docker run -d 
           -p 5000:5000
           --name python ghcr.io/mohamad0880218/python:latest
     
