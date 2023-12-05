@@ -1,17 +1,18 @@
 import unittest
+import os
 from main import app, db, User
-PASSWORD = "Root_User"
-PUBLIC_IP_ADDRESS = "34.171.123.44"
-DBNAME = "testappdb"
-PROJECT_ID = "grounded-pager-400600"
-INSTANCE_NAME = "my-sql"
+PASSWORD = os.environ.get("PASSWORD")
+PUBLIC_IP_ADDRESS = os.environ.get("PUBLIC_IP_ADDRESS")
+DBNAME = os.environ.get("DBNAME","testappdb")
+PROJECT_ID = os.environ.get("PROJECT_ID")
+INSTANCE_NAME = os.environ.get("INSTANCE_NAME")
 
 class TestApp(unittest.TestCase):
 
     def setUp(self):
         # Use a separate test database
         app.config['TESTING'] = True
-        app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"
+        app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}_test"
         #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
 

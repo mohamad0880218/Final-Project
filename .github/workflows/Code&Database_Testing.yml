@@ -10,6 +10,12 @@ jobs:
   APPLICATION_TESTING: 
   
     runs-on: ubuntu-latest
+    env:
+      PASSWORD: ${{ secrets.APP_PASS }}
+      PUBLIC_IP_ADDRESS: ${{ secrets.APP_DB_IP }}
+      DBNAME: ${{ secrets.APP_TEST_DB }}
+      PROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
+      INSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -29,7 +35,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest testt.py
-  
+     
   CREATING_PUBLISHING_IMAGE:
     runs-on: ubuntu-latest
     
