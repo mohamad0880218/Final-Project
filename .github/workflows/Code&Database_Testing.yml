@@ -58,8 +58,7 @@ jobs:
         
     - name: Testin image 
       run: |
-        docker run -d \
-          -e DBNAME= "${{ secrets.APP_TEST_DB }}" \
+        docker run -d -e DBNAME= "${{ secrets.APP_TEST_DB }}" \
           -e INSTANCE_NAME= "${{ secrets.APP_DB_INSTANCE }}" \
           -e PASSWORD= "${{ secrets.APP_PASS }}" \
           -e PUBLIC_IP_ADDRESS= "${{ secrets.APP_DB_IP }}" \
