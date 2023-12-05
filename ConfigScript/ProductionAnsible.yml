@@ -36,7 +36,7 @@
       command: "docker pull ghcr.io/mohamad0880218/python:latest"
       become: yes
     - name: container try
-     command: >
+     command: |
        docker run -p 5000:5000 \
          -e PASSWORD="{{ lookup('env', 'pWORD') }}" \
          -e DBNAME="{{ lookup('env', 'bBNAME') }}" \
