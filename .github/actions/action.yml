@@ -44,6 +44,6 @@ runs:
       run: docker rm python
       shell: bash
       
-     - id: Push_Image
+    - id: Push_Image
       run: docker push ghcr.io/mohamad0880218/python:latest
       shell: bash 
