@@ -21,7 +21,7 @@ inputs:
 
 runs:
   using: 'composite'
-  shell: bash  # or 'pwsh' for PowerShell
+  
   env:
     APP_PASS: ${{ inputs.APP_PASS }}
     APP_DB_IP: ${{ inputs.APP_DB_IP }}
@@ -31,13 +31,14 @@ runs:
   steps:
     - name: Set up Docker
       run: docker/setup-buildx-action@v1
+      shell: bash  # or 'pwsh' for PowerShell
 
     - name: Login to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
+      shell: bash  # or 'pwsh' for PowerShell
     - name: Building image
       run: docker build -t ghcr.io/mohamad0880218/python:latest .
-
+      shell: bash  # or 'pwsh' for PowerShell
    # - name: Testing image
     #  run: docker run -d \
      #        -e DBNAME: "{{ lookup('env', 'APP_TEST_DB') }}" \
