@@ -32,12 +32,12 @@ runs:
     - run: docker/setup-buildx-action@v1
       shell: bash  # or 'pwsh' for PowerShell
 
-    - id: Login to GitHub Container Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      shell: bash  # or 'pwsh' for PowerShell
-    - id: Building image
-      run: docker build -t ghcr.io/mohamad0880218/python:latest .
-      shell: bash  # or 'pwsh' for PowerShell
+    #- id: Login to GitHub Container Registry
+     # run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+     # shell: bash  # or 'pwsh' for PowerShell
+    #- id: Building image
+     # run: docker build -t ghcr.io/mohamad0880218/python:latest .
+     # shell: bash  # or 'pwsh' for PowerShell
    # - name: Testing image
     #  run: docker run -d \
      #        -e DBNAME: "{{ lookup('env', 'APP_TEST_DB') }}" \
