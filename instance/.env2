@@ -1,0 +1,5 @@
+DBNAME= ${{ inputs.APP_TEST_DB }}
+INSTANCE_NAME= ${{ inputs.APP_DB_INSTANCE }}
+PASSWORD= ${{ inputs.APP_PASS }}
+PUBLIC_IP_ADDRESS= ${{ inputs.APP_DB_IP }}
+PROJECT_ID= ${{ inputs.APP_PROJECT_ID }}
