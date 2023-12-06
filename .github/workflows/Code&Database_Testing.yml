@@ -82,3 +82,20 @@ jobs:
         docker stop python
         docker rm python
         docker push ghcr.io/mohamad0880218/python:latest
+        
+  USING_CUSTOMER_ACTION:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+   
+
+    - name: Build and Publish Docker Image
+      uses: ./.github/actions
+      with:
+        APP_PASS: ${{ secrets.APP_PASS }}
+        APP_DB_IP: ${{ secrets.APP_DB_IP }}
+        APP_TEST_DB: ${{ secrets.APP_TEST_DB }}
+        APP_PROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
+        APP_DB_INSTANCE: ${{ secrets.APP_DB_INSTANCE }}
