@@ -34,9 +34,16 @@ runs:
 
     - id: Testing_image
       run: docker run -d --env-file ./instance/.env2 -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
-      shell: bash  
-    #- name: Push the package
-    #  run: |
-     #   docker stop python
-      #  docker rm python
-      #  docker push ghcr.io/mohamad0880218/python:latest
+      shell: bash
+      
+    - id: Stop_container
+      run: docker stop python
+      shell: bash
+      
+    - id: Stop_container
+      run: docker rm python
+      shell: bash
+      
+     - id: Push_Image
+      run: docker push ghcr.io/mohamad0880218/python:latest
+      shell: bash 
