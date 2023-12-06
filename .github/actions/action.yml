@@ -29,14 +29,14 @@ runs:
     APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
     APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
   steps:
-    - name: Set up Docker
+    - id: Set up Docker
       run: docker/setup-buildx-action@v1
       shell: bash  # or 'pwsh' for PowerShell
 
-    - name: Login to GitHub Container Registry
+    - id: Login to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       shell: bash  # or 'pwsh' for PowerShell
-    - name: Building image
+    - id: Building image
       run: docker build -t ghcr.io/mohamad0880218/python:latest .
       shell: bash  # or 'pwsh' for PowerShell
    # - name: Testing image
