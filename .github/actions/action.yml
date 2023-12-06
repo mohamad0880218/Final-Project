@@ -22,12 +22,12 @@ inputs:
 runs:
   using: 'composite'
   
-  env:
-    APP_PASS: ${{ inputs.APP_PASS }}
-    APP_DB_IP: ${{ inputs.APP_DB_IP }}
-    APP_TEST_DB: ${{ inputs.APP_TEST_DB }}
-    APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
-    APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
+  #env:
+  #  APP_PASS: ${{ inputs.APP_PASS }}
+  #  APP_DB_IP: ${{ inputs.APP_DB_IP }}
+  #  APP_TEST_DB: ${{ inputs.APP_TEST_DB }}
+  #  APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
+  #  APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
   steps:
     - run: docker/setup-buildx-action@v1
       shell: bash  # or 'pwsh' for PowerShell
