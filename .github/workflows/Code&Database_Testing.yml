@@ -7,10 +7,11 @@ on:
    # branches: [ "master" ]
 
 jobs:
+#Running the unit tests on the application
   APPLICATION_TESTING: 
   
     runs-on: ubuntu-latest
-    env:
+    env:                                             #environment variables
       PASSWORD: ${{ secrets.APP_PASS }}
       PUBLIC_IP_ADDRESS: ${{ secrets.APP_DB_IP }}
       DBNAME: ${{ secrets.APP_TEST_DB }}
@@ -29,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt            #installing rquirements using pip
         
     - name: Lint with flake8
       run: |
@@ -40,50 +41,19 @@ jobs:
         
     - name: Test with pytest
       run: |
-        pytest testt.py --junitxml=pytest-results.xml
+        pytest testt.py --junitxml=pytest-results.xml    #Runing unit test and getting output in xml file
         
     - name: Archive Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2                   #Uploading the artifact
       with:
         name: artifacts
         path: |
           Artifact/ 
 
 
-    
-
-  CREATING_PUBLISHING_IMAGE:
-    runs-on: ubuntu-latest
-    env:
-      pASSWORD: ${{ secrets.APP_PASS }}
-      pUBLIC_IP_ADDRESS: ${{ secrets.APP_DB_IP }}
-      bBNAME: ${{ secrets.APP_TEST_DB }}
-      pROJECT_ID: ${{ secrets.APP_PROJECT_ID }}
-      iNSTANCE_NAME: ${{ secrets.APP_DB_INSTANCE }}
-      
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Login to GitHub Container Registry
-      run: |
-        sudo apt-get install curl
-        echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-    
-    - name: Building image
-      run: |
-        docker build -t ghcr.io/mohamad0880218/python:latest .
+# Custome action for building, testing and publishing the package.    
         
-    - name: Testin image 
-      run: |
-        docker run -d --env-file ./instance/.env -p 5000:5000 --name python ghcr.io/mohamad0880218/python:latest
-    
-    - name: PUSH THE PACKAGE
-      run: |
-        docker stop python
-        docker rm python
-        docker push ghcr.io/mohamad0880218/python:latest
-        
-  USING_CUSTOMER_ACTION:
+  USING_CUSTOM_ACTION:
     runs-on: ubuntu-latest
     steps:
     
@@ -91,9 +61,9 @@ jobs:
       uses: actions/checkout@v3
    
 
-    - name: Build and Publish Docker Image
-      uses: ./.github/actions
-      with:
+    - name: Build,Test and Publish Docker Image
+      uses: ./.github/actions                                 #Calling the custom action
+      with:                                                   #Passing values to Custom action
         APP_PASS: ${{ secrets.APP_PASS }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
         APP_DB_IP: ${{ secrets.APP_DB_IP }}
