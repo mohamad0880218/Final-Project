@@ -29,7 +29,7 @@ runs:
   #  APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
   #  APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
   steps:
-    - run: echo hello
+    - run: docker build -t ghcr.io/mohamad0880218/python:latest .
       shell: bash  # or 'pwsh' for PowerShell
 
     #- id: Login to GitHub Container Registry
