@@ -29,16 +29,16 @@ runs:
       shell: bash  # or 'pwsh' for PowerShell
 
     - id: Login_to_GitHub_Container_Registry
-      run: echo ${{ TOKEN }} | docker login ghcr.io -u mohamad0880218 --password-stdin
+      run: echo ${{ inputs.TOKEN }} | docker login ghcr.io -u mohamad0880218 --password-stdin
       shell: bash  # or 'pwsh' for PowerShell
 
     - id: Testing_image
       run: docker run -d \
-             -e DBNAME= ${{ APP_TEST_DB }} \
-             -e INSTANCE_NAME= ${{ APP_DB_INSTANCE }} \
-             -e PASSWORD= ${{ APP_PASS }} \
-             -e PUBLIC_IP_ADDRESS= ${{ APP_DB_IP }} \
-             -e PROJECT_ID= ${{ APP_PROJECT_ID }} \
+             -e DBNAME= ${{ inputs.APP_TEST_DB }} \
+             -e INSTANCE_NAME= ${{ inputs.APP_DB_INSTANCE }} \
+             -e PASSWORD= ${{ inputs.APP_PASS }} \
+             -e PUBLIC_IP_ADDRESS= ${{ inputs.APP_DB_IP }} \
+             -e PROJECT_ID= ${{ inputs.APP_PROJECT_ID }} \
              -p 5000:5000 \
              --name python ghcr.io/mohamad0880218/python:latest
       shell: bash  
