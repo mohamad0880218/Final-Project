@@ -29,7 +29,7 @@ runs:
   #  APP_PROJECT_ID: ${{ inputs.APP_PROJECT_ID }}
   #  APP_DB_INSTANCE: ${{ inputs.APP_DB_INSTANCE }}
   steps:
-    - run: docker/setup-buildx-action@v1
+    - run: echo hello
       shell: bash  # or 'pwsh' for PowerShell
 
     #- id: Login to GitHub Container Registry
