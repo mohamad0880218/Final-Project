@@ -28,11 +28,11 @@ runs:
     - run: docker build -t ghcr.io/mohamad0880218/python:latest .
       shell: bash  # or 'pwsh' for PowerShell
 
-    - id: Login to GitHub Container Registry
+    - id: Login_to_GitHub_Container_Registry
       run: echo ${{ TOKEN }} | docker login ghcr.io -u mohamad0880218 --password-stdin
       shell: bash  # or 'pwsh' for PowerShell
 
-    - name: Testing image
+    - id: Testing_image
       run: docker run -d \
              -e DBNAME= ${{ APP_TEST_DB }} \
              -e INSTANCE_NAME= ${{ APP_DB_INSTANCE }} \
