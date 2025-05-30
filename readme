@@ -1,2 +1,51 @@
-CI/CD pipeline using github actions to deploy python application on testing and production environment.
-  
+# 🚀 Final Project: CI/CD Pipeline for Python Application
+
+![GitHub Actions CI/CD](https://img.shields.io/github/workflow/status/your-username/your-repo-name/CI-CD?logo=github&label=CI/CD%20Pipeline&style=flat-square)
+
+This project implements a full **CI/CD pipeline** using **GitHub Actions**, **Docker**, and **Ansible** to deploy a Python web application into both **testing** and **production environments**.
+
+---
+
+## 📊 Architecture Diagram
+
+![CI/CD Architecture](./assets/cicd-architecture.png)
+
+---
+
+## 🛠️ Key Components
+
+- **CI/CD Automation**: GitHub Actions workflows for:
+  - Linting and testing (`Code&Database_Testing.yml`)
+  - Testing environment deployment (`TestingEnvironment.yml`)
+  - Production deployment (`Production-Environment.yml`)
+- **Infrastructure Automation**: Ansible playbooks for:
+  - [`TestAnsible.yml`](./ConfigScript/TestAnsible.yml)
+  - [`ProductionAnsible.yml`](./ConfigScript/ProductionAnsible.yml)
+- **Containerization**: Dockerfile for application packaging
+- **Application**: Python-based backend with test suite
+
+---
+| Tool           | Purpose                           |
+| -------------- | --------------------------------- |
+| GitHub Actions | CI/CD automation                  |
+| Ansible        | Server configuration & deployment |
+| Docker         | Containerization                  |
+| Python         | Application language              |
+| YAML           | Workflow & playbook syntax        |
+
+## 🔁 CI/CD Pipeline Flow
+
+```text
+Git Push
+   ↓
+GitHub Actions
+   ↓
+Code & DB Testing (YAML + Python Tests)
+   ↓
+Docker Build
+   ↓
+Deploy to Testing Environment via Ansible
+   ↓
+[Manual Approval]
+   ↓
+Deploy to Production via Ansible
